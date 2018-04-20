@@ -4,7 +4,7 @@
 ### build server
 $npm run dev-server
 ### run server
-$npm run server to run server
+$npm run server
 
 ## with gulp
 $gulp
