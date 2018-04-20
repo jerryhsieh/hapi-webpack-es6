@@ -4,8 +4,8 @@
   "description": "isomorphic javascript",
   "main": "./dist/app.js",
   "scripts": {
-    "build": "npx babel src/app.js -o dist/app.js --source-maps ",
     "dev-server": "webpack --mode development --config webpack-back.config.js",
+    "server": "node dist/server.bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
