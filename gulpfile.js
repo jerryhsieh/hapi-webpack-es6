@@ -1,3 +1,11 @@
+//
+//
+// File name : gulpfile.js
+// Author: Jerry Hsieh @ 2018-04-21
+// Copyright © 2018, Jerry Hsieh, all rights reserved.
+// 
+// 
+
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var nodemon = require('gulp-nodemon');
@@ -12,8 +20,14 @@ gulp.task('compile', function () {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('copy', function () {
+  return gulp.src('src/**/*.html')
+    .pipe(gulp.dest('dist'));
+})
+
 gulp.task('watch', function () {
   gulp.watch('src/**/*.js', ['compile']);
+  gulp.watch('src/**/*.html', ['copy']);
 });
 
 gulp.task('start', function () {
@@ -25,8 +39,8 @@ gulp.task('start', function () {
   })
 })
 
-
 gulp.task('default', function (callback) {
-  sequence(['compile', 'watch'], 'start', callback);
+  sequence(['compile', 'watch', 'copy'], 'start', callback);
 });
+
 

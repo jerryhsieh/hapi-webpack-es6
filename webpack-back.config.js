@@ -1,5 +1,26 @@
+//
+//
+// File name : webpack-back.config.js
+// Author: Jerry Hsieh @ 2018-04-21
+// Copyright © 2018, Jerry Hsieh, all rights reserved.
+// 
+// 
+
 const Path = require('path');
 const fs = require('fs');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+// the path(s) that should be cleaned
+let pathsToClean = [
+  'build'
+]
+
+// the clean options to use
+let cleanOptions = {
+  verbose: true
+}
 
 var nodeModules = {};
 fs.readdirSync('node_modules')
@@ -15,9 +36,8 @@ module.exports = {
     './src/app.js'
   ],
   output: {
-    path: Path.resolve(__dirname, 'dist'),
-    filename: 'server.bundle.js',
-    publicPath: '/'
+    path: Path.resolve(__dirname, 'build'),
+    filename: 'server.bundle.js'
   },
   target: 'node',
   externals: nodeModules,
@@ -43,6 +63,19 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    }),
+    new CleanWebpackPlugin(pathsToClean, cleanOptions),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/templates/',
+        to: 'templates'
+      },
+    ])
+  ]
 };
 
