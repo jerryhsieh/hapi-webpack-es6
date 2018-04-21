@@ -42,12 +42,9 @@ const provision = async () => {
 
   server.route({
     method: 'GET',
-    path: '/hello',
+    path: '/hello/{name*}',
     handler: function (req, h) {
-      return h.view('index', {
-        fname: 'Jerry',
-        lname: 'Hsieh'
-      })
+      return h.view('index', getName(req))
     }
   });
 
@@ -56,3 +53,14 @@ const provision = async () => {
 };
 
 provision();
+
+function getName(req) {
+  let name = {
+    fname: 'Jerry',
+    lname: 'Hsieh'
+  };
+  let nameParts = req.params.name ? req.params.name.split('/') : [];
+  name.fname = (nameParts[0] || req.query.fname) || name.fname;
+  name.lname = (nameParts[1] || req.query.lname) || name.lname;
+  return name;
+}
