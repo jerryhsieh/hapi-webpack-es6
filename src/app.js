@@ -4,7 +4,9 @@
 // Author: Jerry Hsieh @ 2018-04-21
 // Copyright © 2018, Jerry Hsieh, all rights reserved.
 // 
-// 
+//
+import Application from './lib';
+
 const Hapi = require('hapi');
 const Vision = require('vision');
 const Nunjucks = require('nunjucks');
@@ -32,23 +34,17 @@ const provision = async () => {
     path: 'templates'
   });
 
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: function (req, h) {
+  const application = new Application({
+    '/': function (req, h) {
       return 'Hello Hapi!';
+    },
+    '/hello/{name*}': function (req, h) {
+      return h.view('index', getName(req));
     }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/hello/{name*}',
-    handler: function (req, h) {
-      return h.view('index', getName(req))
-    }
-  });
-
-  await server.start();
+  }, {
+      server: server
+    });
+  await application.start();
   console.log('Server running at:', server.info.uri);
 };
 

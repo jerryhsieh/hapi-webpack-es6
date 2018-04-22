@@ -77,6 +77,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/core-js/object/define-property.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/core-js/object/define-property.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__(/*! core-js/library/fn/object/define-property */ \"./node_modules/core-js/library/fn/object/define-property.js\");\n\n//# sourceURL=webpack:///./node_modules/@babel/runtime/core-js/object/define-property.js?");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/core-js/promise.js":
 /*!********************************************************!*\
   !*** ./node_modules/@babel/runtime/core-js/promise.js ***!
@@ -99,6 +110,28 @@ eval("var _Promise = __webpack_require__(/*! ../core-js/promise */ \"./node_modu
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("function _classCallCheck(instance, Constructor) {\n  if (!(instance instanceof Constructor)) {\n    throw new TypeError(\"Cannot call a class as a function\");\n  }\n}\n\nmodule.exports = _classCallCheck;\n\n//# sourceURL=webpack:///./node_modules/@babel/runtime/helpers/classCallCheck.js?");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/createClass.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var _Object$defineProperty = __webpack_require__(/*! ../core-js/object/define-property */ \"./node_modules/@babel/runtime/core-js/object/define-property.js\");\n\nfunction _defineProperties(target, props) {\n  for (var i = 0; i < props.length; i++) {\n    var descriptor = props[i];\n    descriptor.enumerable = descriptor.enumerable || false;\n    descriptor.configurable = true;\n    if (\"value\" in descriptor) descriptor.writable = true;\n\n    _Object$defineProperty(target, descriptor.key, descriptor);\n  }\n}\n\nfunction _createClass(Constructor, protoProps, staticProps) {\n  if (protoProps) _defineProperties(Constructor.prototype, protoProps);\n  if (staticProps) _defineProperties(Constructor, staticProps);\n  return Constructor;\n}\n\nmodule.exports = _createClass;\n\n//# sourceURL=webpack:///./node_modules/@babel/runtime/helpers/createClass.js?");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
@@ -118,6 +151,17 @@ eval("function _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? o
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("module.exports = __webpack_require__(/*! regenerator-runtime */ \"regenerator-runtime\");\n\n\n//# sourceURL=webpack:///./node_modules/@babel/runtime/regenerator/index.js?");
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/object/define-property.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/library/fn/object/define-property.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("__webpack_require__(/*! ../../modules/es6.object.define-property */ \"./node_modules/core-js/library/modules/es6.object.define-property.js\");\nvar $Object = __webpack_require__(/*! ../../modules/_core */ \"./node_modules/core-js/library/modules/_core.js\").Object;\nmodule.exports = function defineProperty(it, key, desc) {\n  return $Object.defineProperty(it, key, desc);\n};\n\n\n//# sourceURL=webpack:///./node_modules/core-js/library/fn/object/define-property.js?");
 
 /***/ }),
 
@@ -819,6 +863,17 @@ eval("\nvar addToUnscopables = __webpack_require__(/*! ./_add-to-unscopables */ 
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/modules/es6.object.define-property.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.object.define-property.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var $export = __webpack_require__(/*! ./_export */ \"./node_modules/core-js/library/modules/_export.js\");\n// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)\n$export($export.S + $export.F * !__webpack_require__(/*! ./_descriptors */ \"./node_modules/core-js/library/modules/_descriptors.js\"), 'Object', { defineProperty: __webpack_require__(/*! ./_object-dp */ \"./node_modules/core-js/library/modules/_object-dp.js\").f });\n\n\n//# sourceURL=webpack:///./node_modules/core-js/library/modules/es6.object.define-property.js?");
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/modules/es6.object.to-string.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/core-js/library/modules/es6.object.to-string.js ***!
@@ -897,7 +952,19 @@ eval("__webpack_require__(/*! ./es6.array.iterator */ \"./node_modules/core-js/l
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"./node_modules/@babel/runtime/helpers/interopRequireDefault.js\");\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ \"./node_modules/@babel/runtime/regenerator/index.js\"));\n\nvar _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"./node_modules/@babel/runtime/helpers/asyncToGenerator.js\"));\n\n//\n//\n// File name : app.js\n// Author: Jerry Hsieh @ 2018-04-21\n// Copyright © 2018, Jerry Hsieh, all rights reserved.\n// \n// \nvar Hapi = __webpack_require__(/*! hapi */ \"hapi\");\n\nvar Vision = __webpack_require__(/*! vision */ \"vision\");\n\nvar Nunjucks = __webpack_require__(/*! nunjucks */ \"nunjucks\");\n\nvar server = Hapi.server({\n  port: 3000\n});\n\nvar provision =\n/*#__PURE__*/\nfunction () {\n  var _ref = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee() {\n    return _regenerator.default.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.next = 2;\n            return server.register(Vision);\n\n          case 2:\n            server.views({\n              engines: {\n                html: {\n                  compile: function compile(src, options) {\n                    var template = Nunjucks.compile(src, options.environment);\n                    return function (context) {\n                      return template.render(context);\n                    };\n                  },\n                  prepare: function prepare(options, next) {\n                    options.compileOptions.environment = Nunjucks.configure(options.path, {\n                      watch: false\n                    });\n                    return next();\n                  }\n                }\n              },\n              relativeTo: __dirname,\n              path: 'templates'\n            });\n            server.route({\n              method: 'GET',\n              path: '/',\n              handler: function handler(req, h) {\n                return 'Hello Hapi!';\n              }\n            });\n            server.route({\n              method: 'GET',\n              path: '/hello/{name*}',\n              handler: function handler(req, h) {\n                return h.view('index', getName(req));\n              }\n            });\n            _context.next = 7;\n            return server.start();\n\n          case 7:\n            console.log('Server running at:', server.info.uri);\n\n          case 8:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n\n  return function provision() {\n    return _ref.apply(this, arguments);\n  };\n}();\n\nprovision();\n\nfunction getName(req) {\n  var name = {\n    fname: 'Jerry',\n    lname: 'Hsieh'\n  };\n  var nameParts = req.params.name ? req.params.name.split('/') : [];\n  name.fname = nameParts[0] || req.query.fname || name.fname;\n  name.lname = nameParts[1] || req.query.lname || name.lname;\n  return name;\n}\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"./node_modules/@babel/runtime/helpers/interopRequireDefault.js\");\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ \"./node_modules/@babel/runtime/regenerator/index.js\"));\n\nvar _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"./node_modules/@babel/runtime/helpers/asyncToGenerator.js\"));\n\nvar _lib = _interopRequireDefault(__webpack_require__(/*! ./lib */ \"./src/lib/index.js\"));\n\n//\n//\n// File name : app.js\n// Author: Jerry Hsieh @ 2018-04-21\n// Copyright © 2018, Jerry Hsieh, all rights reserved.\n// \n//\nvar Hapi = __webpack_require__(/*! hapi */ \"hapi\");\n\nvar Vision = __webpack_require__(/*! vision */ \"vision\");\n\nvar Nunjucks = __webpack_require__(/*! nunjucks */ \"nunjucks\");\n\nvar server = Hapi.server({\n  port: 3000\n});\n\nvar provision =\n/*#__PURE__*/\nfunction () {\n  var _ref = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee() {\n    var application;\n    return _regenerator.default.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.next = 2;\n            return server.register(Vision);\n\n          case 2:\n            server.views({\n              engines: {\n                html: {\n                  compile: function compile(src, options) {\n                    var template = Nunjucks.compile(src, options.environment);\n                    return function (context) {\n                      return template.render(context);\n                    };\n                  },\n                  prepare: function prepare(options, next) {\n                    options.compileOptions.environment = Nunjucks.configure(options.path, {\n                      watch: false\n                    });\n                    return next();\n                  }\n                }\n              },\n              relativeTo: __dirname,\n              path: 'templates'\n            });\n            application = new _lib.default({\n              '/': function _(req, h) {\n                return 'Hello Hapi!';\n              },\n              '/hello/{name*}': function helloName(req, h) {\n                return h.view('index', getName(req));\n              }\n            }, {\n              server: server\n            });\n            _context.next = 6;\n            return application.start();\n\n          case 6:\n            console.log('Server running at:', server.info.uri);\n\n          case 7:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n\n  return function provision() {\n    return _ref.apply(this, arguments);\n  };\n}();\n\nprovision();\n\nfunction getName(req) {\n  var name = {\n    fname: 'Jerry',\n    lname: 'Hsieh'\n  };\n  var nameParts = req.params.name ? req.params.name.split('/') : [];\n  name.fname = nameParts[0] || req.query.fname || name.fname;\n  name.lname = nameParts[1] || req.query.lname || name.lname;\n  return name;\n}\n\n//# sourceURL=webpack:///./src/app.js?");
+
+/***/ }),
+
+/***/ "./src/lib/index.js":
+/*!**************************!*\
+  !*** ./src/lib/index.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"./node_modules/@babel/runtime/helpers/interopRequireDefault.js\");\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ \"./node_modules/@babel/runtime/helpers/classCallCheck.js\"));\n\nvar _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ \"./node_modules/@babel/runtime/helpers/createClass.js\"));\n\n//\n//\n// File name : index.js\n// Author: Jerry Hsieh @ 2018-04-22\n// Copyright © 2018, Jerry Hsieh, all rights reserved.\n// \n// \nvar Application =\n/*#__PURE__*/\nfunction () {\n  function Application(routes, options) {\n    (0, _classCallCheck2.default)(this, Application);\n    this.server = options.server;\n    this.registerRoutes(routes);\n  }\n\n  (0, _createClass2.default)(Application, [{\n    key: \"registerRoutes\",\n    value: function registerRoutes(routes) {\n      for (var path in routes) {\n        this.addRoute(path, routes[path]);\n      }\n    }\n  }, {\n    key: \"addRoute\",\n    value: function addRoute(path, handler) {\n      this.server.route({\n        path: path,\n        method: 'GET',\n        handler: handler\n      });\n    }\n  }, {\n    key: \"start\",\n    value: function start() {\n      this.server.start();\n    }\n  }]);\n  return Application;\n}();\n\nexports.default = Application;\n\n//# sourceURL=webpack:///./src/lib/index.js?");
 
 /***/ }),
 
