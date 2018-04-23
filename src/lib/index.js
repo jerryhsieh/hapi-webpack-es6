@@ -4,7 +4,8 @@
 // Author: Jerry Hsieh @ 2018-04-22
 // Copyright © 2018, Jerry Hsieh, all rights reserved.
 // 
-// 
+//
+//import Controller from "./controller";
 
 export default class Application {
   constructor(routes, options) {
@@ -18,11 +19,19 @@ export default class Application {
     }
   }
 
-  addRoute(path, handler) {
+  addRoute(path, Controller) {
     this.server.route({
       path: path,
       method: 'GET',
-      handler: handler
+      handler: (request, h) => {
+        const controller = new Controller({
+          query: request.query,
+          params: request.params
+        });
+
+        controller.index(this, request, h);
+        return controller.toString();
+      }
     })
   }
 
