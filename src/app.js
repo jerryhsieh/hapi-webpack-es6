@@ -32,12 +32,12 @@ let viewEngine = {
 };
 
 const provision = async () => {
-  //await server.register(Vision);
-  // server.views({
-  //   engines: viewEngine,
-  //   relativeTo: __dirname,
-  //   path: 'templates'
-  // });
+  await server.register(Vision);
+  server.views({
+    engines: viewEngine,
+    relativeTo: __dirname,
+    path: 'templates'
+  });
 
   const application = new Application({
     '/': MainController,

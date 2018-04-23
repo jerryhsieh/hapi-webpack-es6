@@ -28,7 +28,6 @@ export default class Application {
           query: request.query,
           params: request.params
         });
-
         controller.index(this, request, h);
         return controller.toString();
       }

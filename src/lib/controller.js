@@ -11,10 +11,10 @@ export default class Controller {
     this.context = context;
   }
 
-  index(application, request, reply) {
+  index(application, request, h) {
     this.application = application;
     this.request = request;
-    this.reply = reply;
+    this.h = h;
   }
 
   toString() {
