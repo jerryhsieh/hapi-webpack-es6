@@ -10,6 +10,7 @@
 export default class Application {
   constructor(routes, options) {
     this.server = options.server;
+    this.document = options.document;
     this.registerRoutes(routes);
   }
 
@@ -28,8 +29,20 @@ export default class Application {
           query: request.query,
           params: request.params
         });
-        controller.index(this, request, h);
-        return controller.toString();
+        controller.index(this, request, h, (err) => {
+          if (err) {
+            return { err: err };
+          }
+        });
+
+        return controller.toString((err, html) => {
+          if (err) {
+            return { err: err };
+          }
+          return this.document(this, controller, request, h, html);
+        });
+
+        //return controller.toString();
       }
     })
   }

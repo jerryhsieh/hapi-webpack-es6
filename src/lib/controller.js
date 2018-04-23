@@ -11,13 +11,15 @@ export default class Controller {
     this.context = context;
   }
 
-  index(application, request, h) {
+  index(application, request, h, callback) {
     this.application = application;
     this.request = request;
     this.h = h;
+    callback(null);
   }
 
   toString() {
     return 'succcess';
+    //return callback(null, 'success');
   }
 }
