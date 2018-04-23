@@ -44,8 +44,10 @@ const provision = async () => {
     '/hello/{name*}': HelloController
   }, {
       server: server,
-      document: function (application, controller, request, reply, body) {
-        return Nunjucks.render('index', { body: body });
+      document: function (application, controller, request, h, body) {
+        console.log('got body', body);
+        //return Nunjucks.render('index', { body: body });
+        return h.view('index', { body: body });
       }
     });
   await application.start();

@@ -35,14 +35,8 @@ export default class Application {
           }
         });
 
-        return controller.toString((err, html) => {
-          if (err) {
-            return { err: err };
-          }
-          return this.document(this, controller, request, h, html);
-        });
+        return this.document(this, controller, request, h, controller.toString());
 
-        //return controller.toString();
       }
     })
   }
