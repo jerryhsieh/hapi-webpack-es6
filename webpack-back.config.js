@@ -8,13 +8,13 @@
 
 const Path = require('path');
 const fs = require('fs');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+//const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // the path(s) that should be cleaned
 let pathsToClean = [
-  'build'
+  'server'
 ]
 
 // the clean options to use
@@ -36,7 +36,7 @@ module.exports = {
     './src/app.js'
   ],
   output: {
-    path: Path.resolve(__dirname, 'build'),
+    path: Path.resolve(__dirname, 'server'),
     filename: 'server.bundle.js'
   },
   target: 'node',
@@ -65,10 +65,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
-    }),
+    // new HtmlWebPackPlugin({
+    //   template: "./src/index.html",
+    //   filename: "./index.html"
+    // }),
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
     new CopyWebpackPlugin([
       {

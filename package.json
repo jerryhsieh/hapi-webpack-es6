@@ -5,18 +5,23 @@
   "main": "./dist/app.js",
   "scripts": {
     "dev-server": "webpack --mode development --config webpack-back.config.js",
-    "server": "node build/server.bundle.js",
+    "dev-client": "webpack --mode development --config webpack-front.config.js",
+    "server": "node server/server.bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "isomorphic",
     "javascript"
   ],
+  "browser": {
+    "./src/app.js": "./src/index.client.js"
+  },
   "author": "Jerry Hsieh",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.44",
     "hapi": "^17.3.1",
+    "inert": "^5.1.0",
     "nunjucks": "^3.1.2"
   },
   "devDependencies": {
@@ -25,8 +30,11 @@
     "@babel/plugin-transform-runtime": "^7.0.0-beta.44",
     "@babel/preset-env": "^7.0.0-beta.44",
     "babel-loader": "^8.0.0-beta.2",
+    "babelify": "github:babel/babelify#master",
+    "browserify": "^16.2.0",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
+    "del": "^3.0.0",
     "file-loader": "^1.1.11",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0-beta.2",
@@ -35,6 +43,7 @@
     "html-webpack-plugin": "^3.2.0",
     "run-sequence": "^2.2.1",
     "source-map-loader": "^0.2.3",
+    "vinyl-source-stream": "^2.0.0",
     "vision": "^5.3.2",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.14",

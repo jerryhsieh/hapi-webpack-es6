@@ -12,8 +12,19 @@ import MainController from './MainController';
 const Hapi = require('hapi');
 const Vision = require('vision');
 const Nunjucks = require('nunjucks');
+const Inert = require('inert');
+const Path = require('path');
+const APP_FILE_PATH = '/application.js';
 
-const server = Hapi.server({ port: 3000 });
+
+const server = Hapi.server({
+  port: 3000,
+  routes: {
+    files: {
+      relativeTo: Path.join(__dirname, 'build')
+    }
+  }
+});
 
 //use nunjunks as template engine
 let viewEngine = {
@@ -33,11 +44,21 @@ let viewEngine = {
 
 const provision = async () => {
   await server.register(Vision);
+  await server.register(Inert);
+
   server.views({
     engines: viewEngine,
     relativeTo: __dirname,
     path: 'templates'
   });
+
+  server.route({
+    method: 'GET',
+    path: APP_FILE_PATH,
+    handler: (request, h) => {
+      return h.file('application.js');
+    }
+  })
 
   const application = new Application({
     '/': MainController,
@@ -45,9 +66,10 @@ const provision = async () => {
   }, {
       server: server,
       document: function (application, controller, request, h, body) {
-        console.log('got body', body);
-        //return Nunjucks.render('index', { body: body });
-        return h.view('index', { body: body });
+        return h.view('index', {
+          body: body,
+          application: APP_FILE_PATH
+        });
       }
     });
   await application.start();
