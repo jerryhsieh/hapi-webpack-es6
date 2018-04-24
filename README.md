@@ -1,12 +1,12 @@
-# Hapi backend build
-
-## with webpack
-### build server
+# Sample Code from Building Isomorphic Javascript Apps
+## with modified to compatible with Hapi V17
+### using webpack
+#### build server
 $npm run dev-server
-### run server
+#### run server
 $npm run server
 
-## with gulp
+### using original gulp
 $gulp
 
 

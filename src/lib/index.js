@@ -35,8 +35,8 @@ export default class Application {
           }
         });
 
-        return this.document(this, controller, request, h, controller.toString());
-
+        let body = controller.toString();
+        return this.document(this, controller, request, h, body);
       }
     })
   }
