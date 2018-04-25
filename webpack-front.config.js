@@ -7,6 +7,7 @@
 // 
 
 const Path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -15,5 +16,10 @@ module.exports = {
   output: {
     path: Path.resolve(__dirname, 'server/build'),
     filename: 'application.js'
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: 'src/templates', to: 'templates' }
+    ])
+  ]
 }

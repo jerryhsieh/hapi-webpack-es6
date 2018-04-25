@@ -18,12 +18,7 @@ const APP_FILE_PATH = '/application.js';
 
 
 const server = Hapi.server({
-  port: 3000,
-  routes: {
-    files: {
-      relativeTo: Path.join(__dirname, 'build')
-    }
-  }
+  port: 3000
 });
 
 //use nunjunks as template engine
@@ -56,9 +51,19 @@ const provision = async () => {
     method: 'GET',
     path: APP_FILE_PATH,
     handler: (request, h) => {
-      return h.file('application.js');
+      //return h.file('/build', { filename: 'application.js', confine: false });
+      return h.file(Path.join(__dirname, 'build', 'application.js'));
     }
-  })
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/templates/{template*}',
+    handler: (request, h) => {
+      //return h.file('/templates/' + request.params.template, { confine: false });
+      return h.file(Path.join(__dirname, 'templates', request.params.template));
+    }
+  });
 
   const application = new Application({
     '/': MainController,

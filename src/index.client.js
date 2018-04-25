@@ -6,4 +6,17 @@
 // 
 // 
 
-console.log('hello browser');
+import Application from './lib'
+import HelloController from './HelloController';
+import MainController from './MainController';
+
+const application = new Application({
+  '/': MainController,
+  '/hello/{name*}': HelloController
+}, {
+    target: 'body'
+  });
+
+application.start();
+
+

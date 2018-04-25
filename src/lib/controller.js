@@ -22,4 +22,11 @@ export default class Controller {
     return 'succcess';
     //return callback(null, 'success');
   }
+
+  render(target) {
+    let body = this.toString();
+    console.log('in render with target', target);
+    console.log('render with body', body);
+    document.querySelector(target).innerHTML = body;
+  }
 }

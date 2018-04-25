@@ -20,10 +20,11 @@ function getName(req) {
   return name;
 }
 
-
 export default class HelloController extends Controller {
   toString() {
-    return Nunjuncks.renderString('<p> Hello {{fname}} {{lname}}</p>', getName(this.context));
-    //return this.h.view('index', getName(this.context));
+    //return Nunjuncks.renderString('<p> Hello {{fname}} {{lname}}</p>', getName(this.context));
+    Nunjuncks.configure('/templates');
+    console.log('string ', Nunjuncks.renderString('hello.html', getName(this.context)));
+    return Nunjuncks.renderString('hello.html', getName(this.context));
   }
 }
