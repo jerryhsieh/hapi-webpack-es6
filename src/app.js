@@ -51,7 +51,6 @@ const provision = async () => {
     method: 'GET',
     path: APP_FILE_PATH,
     handler: (request, h) => {
-      //return h.file('/build', { filename: 'application.js', confine: false });
       return h.file(Path.join(__dirname, 'build', 'application.js'));
     }
   });
@@ -60,7 +59,6 @@ const provision = async () => {
     method: 'GET',
     path: '/templates/{template*}',
     handler: (request, h) => {
-      //return h.file('/templates/' + request.params.template, { confine: false });
       return h.file(Path.join(__dirname, 'templates', request.params.template));
     }
   });
