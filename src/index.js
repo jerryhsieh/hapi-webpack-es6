@@ -15,8 +15,8 @@ import nunjucks from 'nunjucks';
 nunjucks.configure(options.nunjucks);
 
 const application = new Application({
+  '/hello/{name*}': HelloController,
   '/': MainController,
-  '/hello/{name*}': HelloController
 }, options);
 
 const start = async () => {

@@ -9,6 +9,7 @@
 import Call from 'call';
 import Query from 'query-string';
 import cookie from './cookie.client';
+import replyFactory from './reply.client';
 
 export default class Application {
   constructor(routes, options) {
@@ -30,6 +31,7 @@ export default class Application {
   }
 
   navigate(url, push = true) {
+    console.log('in navigate with url', url);
     if (!history.pushState) {         // browser do not support history API
       window.location = url;
       return;
@@ -47,6 +49,7 @@ export default class Application {
     let Controller = this.routes[route];
     // if match and Controller exist, instanciate
     if (route && Controller) {
+      console.log('with route and controller', route);
       const controller = new Controller({
         query: Query.parse(search),
         params: params,
@@ -54,17 +57,18 @@ export default class Application {
       });
 
       const request = () => { };
-      const reply = () => { };
+      const reply = replyFactory(this);
       controller.index(this, request, reply, (err) => {
         if (err) {
           return err;
         }
+        controller.render(this.options.target);
       });
 
-      controller.render(this.options.target);
     }
 
     if (push) {
+      console.log('ready to push url', url);
       history.pushState({}, null, url);
     }
   }
