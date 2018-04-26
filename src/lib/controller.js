@@ -25,8 +25,6 @@ export default class Controller {
 
   render(target) {
     let body = this.toString();
-    console.log('in render with target', target);
-    console.log('render with body', body);
     document.querySelector(target).innerHTML = body;
   }
 }

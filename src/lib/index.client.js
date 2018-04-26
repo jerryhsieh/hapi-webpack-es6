@@ -8,7 +8,6 @@
 
 import Call from 'call';
 import Query from 'query-string';
-//import Controller from '../../dist/lib/controller';
 
 export default class Application {
   constructor(routes, options) {
@@ -30,7 +29,6 @@ export default class Application {
   }
 
   navigate(url, push = true) {
-    console.log('navigate called with url', url);
     if (!history.pushState) {         // browser do not support history API
       window.location = url;
       return;
@@ -61,11 +59,8 @@ export default class Application {
         }
       });
 
-      console.log(this.options.target);
       controller.render(this.options.target);
     }
-
-    console.log(url);
 
     if (push) {
       history.pushState({}, null, url);
@@ -73,10 +68,7 @@ export default class Application {
   }
 
   start() {
-    console.log('in client application start');
-
     this.popStateListener = window.addEventListener('popstate', (e) => {
-      console.log('in popstate even listener');
       let { pathname, search } = window.location;
       let url = `${pathname}${search}`;
       this.navigate(url, false);

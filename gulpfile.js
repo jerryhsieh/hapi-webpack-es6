@@ -14,17 +14,23 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var del = require('del');
 var babelify = require('babelify');
+var buffer = require('vinyl-buffer')
+var sourcemaps = require('gulp-sourcemaps');
+var log = require('gulplog');
 
 gulp.task('bundle', function () {
   var b = browserify({
     entries: 'src/app.js',
     debug: true
   })
-    .transform(babelify, { presets: ["@babel/preset-env"] });
+    .transform(babelify, { presets: ["@babel/preset-env"], sourceMaps: true });
 
   return b.bundle()
-    .on('error', function (err) { console.error(err); this.emit('end'); })
     .pipe(source('build/application.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .on('error', log.error)
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist'))
 });
 

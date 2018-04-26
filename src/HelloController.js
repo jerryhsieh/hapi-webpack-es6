@@ -22,9 +22,7 @@ function getName(req) {
 
 export default class HelloController extends Controller {
   toString() {
-    //return Nunjuncks.renderString('<p> Hello {{fname}} {{lname}}</p>', getName(this.context));
     Nunjuncks.configure('/templates');
-    console.log('string ', Nunjuncks.render('hello.html', getName(this.context)));
     return Nunjuncks.render('hello.html', getName(this.context));
   }
 }
