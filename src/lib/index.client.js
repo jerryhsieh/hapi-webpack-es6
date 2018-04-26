@@ -8,6 +8,7 @@
 
 import Call from 'call';
 import Query from 'query-string';
+import cookie from './cookie.client';
 
 export default class Application {
   constructor(routes, options) {
@@ -48,7 +49,8 @@ export default class Application {
     if (route && Controller) {
       const controller = new Controller({
         query: Query.parse(search),
-        params: params
+        params: params,
+        cookie: cookie
       });
 
       const request = () => { };

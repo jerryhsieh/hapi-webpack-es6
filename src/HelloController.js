@@ -21,6 +21,12 @@ function getName(req) {
 }
 
 export default class HelloController extends Controller {
+
+  index(application, request, reply, callback) {
+    this.context.cookie.set('random', '_' + (Math.floor(Math.random() * 1000) + 1), { path: '/' });
+    return callback(null);
+  }
+
   toString() {
     Nunjuncks.configure('/templates');
     return Nunjuncks.render('hello.html', getName(this.context));
