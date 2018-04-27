@@ -23,8 +23,30 @@ export default class Controller {
     //return callback(null, 'success');
   }
 
-  render(target) {
+  render(target, callback) {
     let body = this.toString();
     document.querySelector(target).innerHTML = body;
+    callback(null, body);
+  }
+
+  serialize() {
+    console.log(this.context.data);
+    console.log('serialize with ', JSON.stringify(this.context.data || {}));
+    return JSON.stringify(this.context.data || {});
+  }
+
+  deserialize() {
+    if (window.__STATE__) {
+      this.context.data = JSON.parse(window.__STATE__ || {});
+      console.log('deserialize with context data', this.context.data);
+    }
+  }
+
+  attach(el) {
+    // to be implement by application
+  }
+
+  detach(el) {
+    // to be implement by application
   }
 }

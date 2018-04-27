@@ -20,15 +20,34 @@ function getName(req) {
   return name;
 }
 
+function onClick(e) {
+  console.log(e.currentTarget);
+}
+
 export default class HelloController extends Controller {
 
   index(application, request, reply, callback) {
     this.context.cookie.set('random', '_' + (Math.floor(Math.random() * 1000) + 1), { path: '/' });
+    this.context.data = { random: Math.floor(Math.random() * 1000) + 1 };
     return callback(null);
   }
 
   toString() {
+    let context = getName(this.context);
+    context.data = this.context.data;
+
     Nunjuncks.configure('/templates');
-    return Nunjuncks.render('hello.html', getName(this.context));
+    return Nunjuncks.render('hello.html', context);
+  }
+  attach(el) {
+    console.log(this.context.data.random);
+    this.clickHandler = el.addEventListener('click', onClick, false);
+  }
+
+  detach(el) {
+    el.removeEventListener('click', onClick, false);
   }
 }
+
+
+

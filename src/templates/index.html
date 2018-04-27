@@ -11,10 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   </head>
-  <body>
+  <header>
     <h2>Hello from Hapi</h2>
     <a href="/hello/Jerry/Hsieh" data-navigate>Hello</a>
+    <p>with state {{state|safe}}</p>
+  </header>
+  <body>
     {{body | safe}}
   </body>
+  <script type="text/javascript">
+  window.__STATE__ = '{{state | safe}}';
+  </script>
   <script type="text/javascript" src={{application}}></script>
 </html>

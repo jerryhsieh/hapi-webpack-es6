@@ -30,13 +30,56 @@ export default class Application {
     }
   }
 
+  getUrl() {
+    let { pathname, search } = window.location;
+    return `${pathname}${search}`;
+  }
+
+  rehydrate() {
+    let targetEl = document.querySelector(this.options.target);
+
+    this.controller = this.createController(this.getUrl());
+    this.controller.deserialize();
+    this.controller.attach(targetEl);
+  }
+
   navigate(url, push = true) {
-    console.log('in navigate with url', url);
     if (!history.pushState) {         // browser do not support history API
       window.location = url;
       return;
     }
 
+    let previousController = this.controller;
+    this.controller = this.createController(url);
+
+    if (this.controller) {
+      const request = () => { };
+      const reply = replyFactory(this);
+      if (push) {
+        history.pushState({}, null, url);
+      }
+
+      this.controller.index(this, request, reply, (err) => {
+        if (err) {
+          return err;
+        }
+        let targetEl = document.querySelector(this.options.target);
+        if (previousController) {
+          previousController.detach(targetEl);
+        }
+        this.controller.render(this.options.target, (err, response) => {
+          if (err) {
+            return reply(err);
+          }
+          reply(response);
+          this.controller.attach(targetEl);
+        });
+      });
+    }
+    console.log(url);
+  }
+
+  createController(url) {
     // decomp query string
     let urlParts = url.split('?');
     // destruct to array
@@ -47,30 +90,13 @@ export default class Application {
     let { route, params } = match;
     // query controller
     let Controller = this.routes[route];
-    // if match and Controller exist, instanciate
-    if (route && Controller) {
-      console.log('with route and controller', route);
-      const controller = new Controller({
+
+    return Controller ?
+      new Controller({
         query: Query.parse(search),
         params: params,
         cookie: cookie
-      });
-
-      const request = () => { };
-      const reply = replyFactory(this);
-      controller.index(this, request, reply, (err) => {
-        if (err) {
-          return err;
-        }
-        controller.render(this.options.target);
-      });
-
-    }
-
-    if (push) {
-      console.log('ready to push url', url);
-      history.pushState({}, null, url);
-    }
+      }) : undefined;
   }
 
   start() {
@@ -92,6 +118,8 @@ export default class Application {
         }
         this.navigate(identifier || href);
       }
-    })
+    });
+
+    this.rehydrate();
   }
 }

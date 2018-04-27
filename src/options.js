@@ -62,8 +62,18 @@ export default {
   provision: provision,
   nunjucks: './dist',
   server: server,
-  document: function (application, controller, request, h, body) {
-    return h.view('index', { body: body, application: APP_FILE_PATH });
+  document: function (application, controller, request, h, body, callback) {
+    console.log('body to document is ', body);
+    return h.view('index', {
+      body: body,
+      application: APP_FILE_PATH,
+      state: controller.serialize()
+    }, (err, html) => {
+      if (err) {
+        return callback(err, null);
+      }
+      return callback(null, html);
+    });
   }
 }
 
