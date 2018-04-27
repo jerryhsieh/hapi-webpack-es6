@@ -10,9 +10,6 @@ import options from './options';
 import Application from './lib';
 import MainController from './MainController';
 import HelloController from './HelloController';
-import nunjucks from 'nunjucks';
-
-nunjucks.configure(options.nunjucks);
 
 const application = new Application({
   '/hello/{name*}': HelloController,
@@ -24,6 +21,9 @@ const start = async () => {
     await options.provision();      // hapi registration
   }
   await application.start();
+  if (options.server) {
+    console.log('Server running at:', options.server.info.uri);
+  }
 }
 
 start();

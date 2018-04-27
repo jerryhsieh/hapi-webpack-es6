@@ -26,11 +26,10 @@ export default class Controller {
   render(target, callback) {
     let body = this.toString();
     document.querySelector(target).innerHTML = body;
-    callback(null, body);
+    return callback(null, body);
   }
 
   serialize() {
-    console.log(this.context.data);
     console.log('serialize with ', JSON.stringify(this.context.data || {}));
     return JSON.stringify(this.context.data || {});
   }

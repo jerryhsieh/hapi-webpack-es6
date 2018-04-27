@@ -40,7 +40,7 @@ export default class HelloController extends Controller {
     return Nunjuncks.render('hello.html', context);
   }
   attach(el) {
-    console.log(this.context.data.random);
+    console.log('attach to ', this.context.data.random);
     this.clickHandler = el.addEventListener('click', onClick, false);
   }
 

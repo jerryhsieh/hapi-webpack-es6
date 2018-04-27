@@ -20,10 +20,10 @@ var log = require('gulplog');
 
 gulp.task('bundle', function () {
   var b = browserify({
-    entries: 'src/app.js',
+    entries: 'src/index.js',
     debug: true
   })
-    .transform(babelify, { presets: ["@babel/preset-env"], sourceMaps: true });
+    .transform(babelify, { plugins: ["@babel/plugin-transform-runtime"], presets: ["@babel/preset-env"], sourceMaps: true });
 
   return b.bundle()
     .pipe(source('build/application.js'))
@@ -58,7 +58,7 @@ gulp.task('watch', function () {
 gulp.task('start', function () {
   nodemon({
     watch: 'dist',
-    script: 'dist/app.js',
+    script: 'dist/index.js',
     ext: 'js',
     env: { 'NODE_ENV': 'development' }
   })

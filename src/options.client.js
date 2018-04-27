@@ -7,6 +7,6 @@
 // 
 
 export default {
-  nunjucks: '/templates',
+  nunjucks: './templates',
   target: 'body'
 }

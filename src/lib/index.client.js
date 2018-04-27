@@ -36,6 +36,7 @@ export default class Application {
   }
 
   rehydrate() {
+    console.log('rehydrate with ', this.options);
     let targetEl = document.querySelector(this.options.target);
 
     this.controller = this.createController(this.getUrl());
@@ -73,6 +74,7 @@ export default class Application {
           }
           reply(response);
           this.controller.attach(targetEl);
+          return response;
         });
       });
     }

@@ -35,6 +35,12 @@ let viewEngine = {
 const provision = async () => {
   await server.register(Vision);
   await server.register(Inert);
+  server.views({
+    engines: viewEngine,
+    relativeTo: __dirname,
+    path: 'templates'
+  });
+
   server.route({
     method: 'GET',
     path: APP_FILE_PATH,
@@ -50,30 +56,19 @@ const provision = async () => {
       return h.file(Path.join(__dirname, 'templates', request.params.template));
     }
   });
-
-  server.views({
-    engines: viewEngine,
-    relativeTo: __dirname,
-    path: 'templates'
-  });
 };
 
 export default {
   provision: provision,
-  nunjucks: './dist',
+  nunjucks: 'templates',
   server: server,
-  document: function (application, controller, request, h, body, callback) {
+  document: function (application, controller, request, h, body) {
     console.log('body to document is ', body);
     return h.view('index', {
       body: body,
       application: APP_FILE_PATH,
       state: controller.serialize()
-    }, (err, html) => {
-      if (err) {
-        return callback(err, null);
-      }
-      return callback(null, html);
-    });
+    })
   }
 }
 
