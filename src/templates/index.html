@@ -13,11 +13,11 @@
   </head>
   <header>
     <h2>Hello from Hapi</h2>
-    <a href="/hello/Jerry/Hsieh" data-navigate>Hello</a>
-    <p>with state {{state|safe}}</p>
   </header>
   <body>
-    {{body | safe}}
+    <content>
+      {{body | safe}}
+    </content>
   </body>
   <script type="text/javascript">
   window.__STATE__ = '{{state | safe}}';

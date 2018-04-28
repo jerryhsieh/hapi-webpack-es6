@@ -8,5 +8,5 @@
 
 export default {
   nunjucks: './templates',
-  target: 'body'
+  target: 'content'
 }

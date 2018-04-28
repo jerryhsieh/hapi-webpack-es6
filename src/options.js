@@ -63,7 +63,6 @@ export default {
   nunjucks: 'templates',
   server: server,
   document: function (application, controller, request, h, body) {
-    console.log('body to document is ', body);
     return h.view('index', {
       body: body,
       application: APP_FILE_PATH,

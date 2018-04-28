@@ -32,14 +32,17 @@ export default class Application {
           params: request.params,
           cookie: cookieFactory(request, h)
         });
-        controller.index(this, request, h, (err) => {
+
+        return controller.index(this, request, h, (err) => {
           if (err) {
             return { err: err };
           }
-        });
 
-        let body = controller.toString();
-        return this.document(this, controller, request, h, body);
+          return controller.stoString().then((body) => {
+            return this.document(this, controller, request, h, body);
+          })
+
+        });
       }
     })
   }

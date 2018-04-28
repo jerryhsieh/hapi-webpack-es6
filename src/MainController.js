@@ -8,10 +8,9 @@
 
 import Controller from './lib/controller';
 
-
 export default class MainController extends Controller {
 
-  index(appliction, request, reply, callback) {
+  index(appliction, request, reply) {
     if (!this.context.cookie.get('greeting')) {
       this.context.cookie.set('greeting', '1', {
         expires: 1000 * 60 * 60 * 24 * 365

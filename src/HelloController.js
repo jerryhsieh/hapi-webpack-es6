@@ -27,18 +27,27 @@ function onClick(e) {
 export default class HelloController extends Controller {
 
   index(application, request, reply, callback) {
+    this.application = application;
     this.context.cookie.set('random', '_' + (Math.floor(Math.random() * 1000) + 1), { path: '/' });
     this.context.data = { random: Math.floor(Math.random() * 1000) + 1 };
     return callback(null);
   }
 
+  // for client side
   toString() {
     let context = getName(this.context);
     context.data = this.context.data;
-
     Nunjuncks.configure('/templates');
     return Nunjuncks.render('hello.html', context);
   }
+
+  // for server side
+  stoString() {
+    let context = getName(this.context);
+    context.data = this.context.data;
+    return this.application.server.render('hello', context);
+  }
+
   attach(el) {
     console.log('attach to ', this.context.data.random);
     this.clickHandler = el.addEventListener('click', onClick, false);
