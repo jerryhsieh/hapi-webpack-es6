@@ -30,14 +30,14 @@ export default class Controller {
   }
 
   serialize() {
-    console.log('serialize with ', JSON.stringify(this.context.data || {}));
+    console.log('server serialize with ', JSON.stringify(this.context.data || {}));
     return JSON.stringify(this.context.data || {});
   }
 
   deserialize() {
     if (window.__STATE__) {
       this.context.data = JSON.parse(window.__STATE__ || {});
-      console.log('deserialize with context data', this.context.data);
+      console.log('client deserialize with context data', this.context.data);
     }
   }
 
