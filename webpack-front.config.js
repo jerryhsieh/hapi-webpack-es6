@@ -11,7 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: [
-    './src/index.client.js'
+    './src/index.js'
   ],
   output: {
     path: Path.resolve(__dirname, 'server/build'),

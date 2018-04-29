@@ -33,7 +33,7 @@ fs.readdirSync('node_modules')
 
 module.exports = {
   entry: [
-    './src/app.js'
+    './src/index.js'
   ],
   output: {
     path: Path.resolve(__dirname, 'server'),
