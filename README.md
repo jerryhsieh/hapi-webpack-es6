@@ -3,7 +3,9 @@
 ### using webpack
 #### build server
 $npm run dev-server
-#### run server
+#### build client
+$npm run dev-client
+#### run server/client
 $npm run server
 
 ### using original gulp
